@@ -1,6 +1,6 @@
 describe('Gestión de Feriados', () => {
     it('Carga la página principal', () => {
-      cy.visit('http://localhost:3000');
+      cy.visit('https://proyecto-crud.onrender.com/');
       cy.contains('Ingresar Feriado').should('be.visible');
     });
   });

@@ -1,4 +1,3 @@
-
 import pkg from 'pg';
 const { Pool } = pkg;
 
@@ -10,7 +9,28 @@ const pool = new Pool({
     }
 });
 
+// Crear la tabla 'feriados' al iniciar la aplicación si no existe
+async function crearTablaFeriados() {
+    try {
+        const createTableQuery = `
+            CREATE TABLE IF NOT EXISTS feriados (
+                id SERIAL PRIMARY KEY,
+                nombre VARCHAR(255) NOT NULL,
+                fecha DATE NOT NULL
+            )
+        `;
+        await pool.query(createTableQuery);
+        console.log('Tabla "feriados" creada correctamente o ya existente.');
+    } catch (error) {
+        console.error('Error al crear la tabla "feriados":', error);
+    }
+}
+
+// Llamar a la función para crear la tabla al iniciar la aplicación
+crearTablaFeriados();
+
 export default pool;
+
 
 
 /*import "dotenv/config";
