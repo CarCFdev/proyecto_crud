@@ -3,9 +3,7 @@ import pg from 'pg';
 // Configuración de la conexión a la base de datos en Render
 const pool = new pg.Pool({
     connectionString: 'postgresql://carpw:dm01T4PiP9N4naBSKoiGmlt5aSRemfWE@dpg-cpiu6k21hbls73bn8d1g-a.oregon-postgres.render.com/dbapp_i2oj',
-    ssl: {
-        rejectUnauthorized: true // Ajusta esto según los requisitos de tu proveedor de base de datos
-    }
+    
 });
 
 // Verificar la conexión inicial
