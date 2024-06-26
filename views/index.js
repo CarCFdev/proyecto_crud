@@ -54,34 +54,6 @@ document.getElementById('cargarFeriadoForm').addEventListener('submit', async fu
     }
 });
 
-/*
-
-document.getElementById('cargarFeriadoForm').addEventListener('submit', async function(event) {
-    event.preventDefault(); // Prevenir el comportamiento por defecto del formulario
-    const nombre = document.getElementById('nombre').value;
-    const fecha = document.getElementById('fecha').value;
-
-    try {
-        const response = await fetch('/cargarFeriado', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({ nombre, fecha }),
-        });
-        const data = await response.json();
-        document.getElementById('mensajeExito').innerText = data.message;
-
-        // Limpiar el formulario después de enviar
-        document.getElementById('cargarFeriadoForm').reset();
-
-        // Actualizar la tabla de feriados después de agregar
-        listarFeriados();
-    } catch (error) {
-        console.error('Error al agregar feriado:', error);
-    }
-});
-*/
 
 document.getElementById('eliminarFeriadoForm').addEventListener('submit', async function(event) {
     event.preventDefault(); // Prevenir el comportamiento por defecto del formulario
@@ -143,28 +115,3 @@ document.getElementById('actualizarFeriadoForm').addEventListener('submit', asyn
         console.error('Error al actualizar feriado:', error);
     }
 });
-
-
-/*const formElement = document.getElementById("/cargarFeriado");
-formElement.addEventListener("submit",(event)=>{
-    event.preventDefault();
-    let nombre = document.getElementById("nombre").value;
-    let fecha = document.getElementById("fecha").value;
-    let  feriado = {nombre: nombre , fecha: fecha};
-    let feriadoJSON = JSON.stringify(feriado);
-    console.log(feriadoJSON);
-
-     */
- /* fetch('http://localhost:3000/agregarferiado', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: feriadoJSON
-    })
-    .then(response => response.json())
-    .then(data => console.log(data))
-    .catch(error => console.error('Error:', error));
-})*/
-
-

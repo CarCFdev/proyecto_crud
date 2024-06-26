@@ -51,10 +51,9 @@ app.get("/feriados", async (req, res) => {
 const normalizeString = (str) => {
     return str.toLowerCase().trim(); // Convertir a minúsculas y quitar espacios al inicio y final
 };
-
 app.post('/cargarFeriado', async (req, res) => {
 
-    const { nombre, fecha } = req.body;
+    let { nombre, fecha } = req.body;  // Cambiar a let para permitir reasignación
     
     // Normalizar el nombre antes de verificar o insertar
     nombre = normalizeString(nombre);
@@ -78,51 +77,7 @@ app.post('/cargarFeriado', async (req, res) => {
     }
 });
 
-/*
-//funciona
-app.post('/cargarFeriado', function(req, res) {
-    const datos = req.body;
-    const nombre = datos.nombre;
-    const fecha = datos.fecha;
 
-    const registrar = "INSERT INTO feriados (nombre, fecha) VALUES ($1, $2)";
-
-    pool.query(registrar, [nombre, fecha], function(error, result) {
-        if (error) {
-            console.error("Error al almacenar datos:", error);
-            res.status(500).json({ error: "Error al almacenar datos" });
-        } else {
-            console.log("Datos almacenados correctamente");
-            res.status(200).json({ message: "Datos almacenados correctamente" });
-        }
-    });
-});
-*/// Ruta DELETE para eliminar un feriado por nombre o fecha
-/*app.delete('/eliminarFeriado', async (req, res) => {
-    const { nombre, fecha } = req.body;
-    try {
-        let query = "DELETE FROM feriados WHERE ";
-        let queryParams = [];
-        
-        if (nombre) {
-            query += "nombre = $1";
-            queryParams.push(nombre);
-        } else if (fecha) {
-            query += "fecha = $1";
-            queryParams.push(fecha);
-        } else {
-            return res.status(400).json({ error: "Se requiere nombre o fecha para eliminar el feriado" });
-        }
-        
-        await pool.query(query, queryParams);
-        console.log(`Feriado con ${nombre ? 'nombre' : 'fecha'} ${nombre || fecha} eliminado`);
-        res.json({ message: `Feriado con ${nombre ? 'nombre' : 'fecha'} ${nombre || fecha} eliminado` });
-    } catch (error) {
-        console.error(`Error al eliminar feriado con ${nombre ? 'nombre' : 'fecha'} ${nombre || fecha}:`, error);
-        res.status(500).json({ error: `Error al eliminar feriado con ${nombre ? 'nombre' : 'fecha'} ${nombre || fecha}` });
-    }
-});
-*/
 app.delete('/eliminarFeriado', async (req, res) => {
     const { nombre, fecha } = req.body;
     try {
