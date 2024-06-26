@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <div>
+        <h2>Ingresar Feriado</h2>
+        <form id="cargarFeriadoForm">
+            <div>
+                Nombre:
+                <input type="text" name="nombre" id="nombre" placeholder="Descripción" required>
+            </div>
+            <br>
+            <div>
+                Fecha:
+                <input type="date" name="fecha" id="fecha" placeholder="dd/mm/aaaa" required min="2024-01-01" max="2024-12-31">
+            </div>
+            <br>
+            <div>
+                <button type="submit">Guardar Feriado</button>
+            </div>
+        </form>
+        <div id="mensajeExito"></div>
+        <div id="mensajeError"></div>
+    </div>
+
+
+    <div>
+        <h2>Listar Feriados</h2>
+        <div>
+            <button onclick="listarFeriados()">Mostrar Todos los Feriados</button>
+        </div>
+        <br>
+        <div id="tablaFeriados">
+            <!-- Aquí se mostrará la tabla de feriados -->
+        </div>
+    </div>
+
+    <div>
+        <h2>Eliminar Feriado</h2>
+        <form id="eliminarFeriadoForm">
+            <div>
+                Nombre del Feriado (opcional):
+                <input type="text" name="nombreEliminar" id="nombreEliminar" placeholder="Nombre del Feriado">
+            </div>
+            <br>
+            <div>
+                Fecha del Feriado (opcional):
+                <input type="date" name="fechaEliminar" id="fechaEliminar">
+            </div>
+            <br>
+            <div>
+                <button type="submit">Eliminar Feriado</button>
+            </div>
+        </form>
+        <div id="mensajeExito"></div>
+    </div>
+
+    <div>
+        <h2>Actualizar Feriado</h2>
+        <form id="actualizarFeriadoForm">
+            <div>
+                Nombre del Feriado (para seleccionar):
+                <input type="text" name="nombreActual" id="nombreActual" placeholder="Nombre actual del Feriado">
+            </div>
+            <br>
+            <div>
+                Fecha del Feriado (para seleccionar):
+                <input type="date" name="fechaActual" id="fechaActual">
+            </div>
+            <br>
+            <div>
+                Nuevo Nombre (opcional):
+                <input type="text" name="nuevoNombre" id="nuevoNombre" placeholder="Nuevo nombre del Feriado">
+            </div>
+            <br>
+            <div>
+                Nueva Fecha (opcional):
+                <input type="date" name="nuevaFecha" id="nuevaFecha">
+            </div>
+            <br>
+            <div>
+                <button type="submit">Actualizar Feriado</button>
+            </div>
+        </form>
+    </div>
+
+    <script src="index.js"></script>
+
+    </body>
+    </html>
