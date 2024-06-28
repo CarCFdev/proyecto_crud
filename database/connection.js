@@ -4,7 +4,7 @@ const { Pool } = pkg;
 const pool = new Pool({
     connectionString: 'postgresql://carpw:dm01T4PiP9N4naBSKoiGmlt5aSRemfWE@dpg-cpiu6k21hbls73bn8d1g-a.oregon-postgres.render.com/dbapp_i2oj',
     ssl: {
-        rejectUnauthorized: true 
+        rejectUnauthorized: true
     }
 });
 
@@ -15,8 +15,7 @@ async function crearTablaFeriados() {
                 id SERIAL PRIMARY KEY,
                 nombre VARCHAR(255) NOT NULL,
                 fecha DATE NOT NULL
-            )
-        `;
+            );
         await pool.query(createTableQuery);
         console.log('Tabla "feriados" creada correctamente o ya existente.');
     } catch (error) {
