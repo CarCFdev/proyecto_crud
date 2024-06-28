@@ -1,15 +1,13 @@
 import pkg from 'pg';
 const { Pool } = pkg;
 
-// Configuración de la conexión a la base de datos en Render
 const pool = new Pool({
     connectionString: 'postgresql://carpw:dm01T4PiP9N4naBSKoiGmlt5aSRemfWE@dpg-cpiu6k21hbls73bn8d1g-a.oregon-postgres.render.com/dbapp_i2oj',
     ssl: {
-        rejectUnauthorized: true // Necesario si Render requiere SSL y no tienes certificados configurados
+        rejectUnauthorized: true 
     }
 });
 
-// Crear la tabla 'feriados' al iniciar la aplicación si no existe
 async function crearTablaFeriados() {
     try {
         const createTableQuery = `
@@ -26,7 +24,6 @@ async function crearTablaFeriados() {
     }
 }
 
-// Llamar a la función para crear la tabla al iniciar la aplicación
 crearTablaFeriados();
 
 export default pool;

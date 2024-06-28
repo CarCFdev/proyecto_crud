@@ -29,11 +29,6 @@ app.use(cors());
 
 
 
-
-
-
-
-
 // Ruta GET para mostrar todos los feriados
 app.get("/feriados", async (req, res) => {
     try {
