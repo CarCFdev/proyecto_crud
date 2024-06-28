@@ -15,7 +15,8 @@ async function crearTablaFeriados() {
                 id SERIAL PRIMARY KEY,
                 nombre VARCHAR(255) NOT NULL,
                 fecha DATE NOT NULL
-            );
+            )
+        `;
         await pool.query(createTableQuery);
         console.log('Tabla "feriados" creada correctamente o ya existente.');
     } catch (error) {
