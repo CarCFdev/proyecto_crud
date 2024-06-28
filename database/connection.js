@@ -1,4 +1,37 @@
-import pg from 'pg';
+import pkg from 'pg';
+const { Pool } = pkg;
+
+// Configuración de la conexión a la base de datos en Render
+const pool = new Pool({
+    connectionString: 'postgresql://carpw:dm01T4PiP9N4naBSKoiGmlt5aSRemfWE@dpg-cpiu6k21hbls73bn8d1g-a.oregon-postgres.render.com/dbapp_i2oj',
+    ssl: {
+        rejectUnauthorized: true // Necesario si Render requiere SSL y no tienes certificados configurados
+    }
+});
+
+// Crear la tabla 'feriados' al iniciar la aplicación si no existe
+async function crearTablaFeriados() {
+    try {
+        const createTableQuery = `
+            CREATE TABLE IF NOT EXISTS feriados (
+                id SERIAL PRIMARY KEY,
+                nombre VARCHAR(255) NOT NULL,
+                fecha DATE NOT NULL
+            )
+        `;
+        await pool.query(createTableQuery);
+        console.log('Tabla "feriados" creada correctamente o ya existente.');
+    } catch (error) {
+        console.error('Error al crear la tabla "feriados":', error);
+    }
+}
+
+// Llamar a la función para crear la tabla al iniciar la aplicación
+crearTablaFeriados();
+
+export default pool;
+
+/*import pg from 'pg';
 
 
 const pool = new Pool({
@@ -19,7 +52,7 @@ pool.connect((err, client, done) => {
 });
 
 export default pool;
-
+*/
 
 /*import "dotenv/config";
 import pkg from 'pg'
