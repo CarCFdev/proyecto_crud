@@ -1,10 +1,14 @@
 import pg from 'pg';
 
-// Configuración de la conexión a la base de datos en Render
-const pool = new pg.Pool({
+
+const pool = new Pool({
     connectionString: 'postgresql://carpw:dm01T4PiP9N4naBSKoiGmlt5aSRemfWE@dpg-cpiu6k21hbls73bn8d1g-a.oregon-postgres.render.com/dbapp_i2oj',
-    
+    ssl: {
+        rejectUnauthorized: false, // Cambia a true si tienes el certificado CA
+        // Puedes configurar el certificado CA si Render lo proporciona
+    }
 });
+    
 
 // Verificar la conexión inicial
 pool.connect((err, client, done) => {
